@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <form id="login">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br>
+        
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" required><br><br>
+        
+        <button type="submit">Entrar</button>
+    </form>
+    
+    <script>
+        document.getElementById("login").addEventListener("submit", function(event) {
+            nome = document.getElementById("nome").value;
+            email = document.getElementById("email").value;
+            senha = document.getElementById("senha").value;
+            
+            Nome = sessionStorage.getItem("nome");
+            Email = sessionStorage.getItem("email");
+            Senha = sessionStorage.getItem("senha");
+            
+            if (nome === Nome && email === Email && senha === Senha) {
+                window.location.href("scriptok.html")
+            } else {
+               window.location.href("scripterro.html")
+            }
+        });
+        
+    </script>
+</body>
+</html>

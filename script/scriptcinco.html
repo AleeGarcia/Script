@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title> Press </title>
+
+    <style>
+       
+        #bola {
+            width: 200px;
+            height: 200px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        #quadradoo {
+            width: 300px;
+            height: 200px;
+            background: red;
+            border-radius: 0%;
+            position: absolute;
+        }
+        
+
+        .quadrado {
+            border-radius: 0; 
+        }
+      
+    </style>
+
+</head>
+
+<body>
+
+    
+    <div id="bola">
+
+    </div>
+
+    <script>
+
+     
+     let bola = document.getElementById("bola")
+     let quadradoo = document.getElementById("quadradoo")
+
+     let posTop = 0;
+     let posLeft = 0;
+     let tamanho = 200;
+
+    
+     bola.style.left = `${posLeft}`
+     bola.style.top = `${posTop}`
+
+     window.onkeypress = function (e) {
+        if(e.key == 'w') {
+            posLeft = posLeft + 10
+            bola.style.left = posLeft + 'px'
+        } else if (e.key == 's') {
+            posTop = posTop + 10
+            bola.style.top = `${posTop}px`
+        } else if (e.key == 'a') {
+            posLeft = posLeft - 10
+            bola.style.left = posLeft + 'px'
+        } else if (e.key == 'd') {
+            posTop = posTop - 10
+            bola.style.top = `${posTop}px`
+        }
+        else if (e.key == 'q') {
+            bola.style.borderRadius = 0
+        }
+        else if (e.key == 'm') {
+        tamanho += 50;
+        }
+        else if (e.key == 'n') {
+        tamanho -= 50;
+        }
+
+        if (posTop <= 530 && posLeft > 600 - tamanho) {
+            alert("erro")
+            posTop = 0
+            posLeft = 0
+
+            
+        }
+
+        bola.style.width = tamanho + "px";
+        bola.style.height = tamanho + "px";
+            
+        }
+
+    </script>
+
+</body>
+</html>

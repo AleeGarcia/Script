@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title> Cor aleatória </title>
+
+</head>
+
+<body>
+
+    
+    <button id="botao">Clica ae</button>
+
+    <script>
+
+        let btn = document.getElementById("botao")
+        btn.onclick = function() {
+            randomColor = Math.floor(Math.random()*16777215).toString(16)
+            document.body.style.backgroundColor = `#${randomColor}`
+        }
+
+    </script>
+</body>
+</html>

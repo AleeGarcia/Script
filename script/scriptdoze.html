@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #chat {
+            display: none;
+            flex-direction: column;
+            align-items: flex;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            width: 100%;
+
+        }
+
+        #chatButton {
+            display: block;
+        }
+
+        #chatMensagem {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .mensagem {
+            background-color: #c1cabd;
+            color: white;
+            padding: 8px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            max-width: 80%;
+            box-sizing: border-box;
+        }
+
+        #chatInput {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #enviarButton {
+            background-color: #4f6cff;
+            color: white;
+            border: none;
+            padding: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #enviarButton:hover {
+            background-color: #31b7ff;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+<button id="chatButton" onclick="abrirChat()">Chat</button>
+
+<div id="chat">
+    <div id="chatMensagem"></div>
+    <input type="text" id="chatInput">
+    <button id="enviarButton" onclick="enviarMensagem()">Enviar</button>
+</div>
+
+<script>
+    let chatMensagem = [];
+
+    function abrirChat() {
+        document.getElementById('chat').style.display = 'flex';
+        document.getElementById('chatButton').style.display = 'none';
+    }
+
+    function enviarMensagem() {
+        let chatInput = document.getElementById('chatInput');
+        let mensagemText = chatInput.value.trim();
+
+        if (mensagemText !== "") {
+            chatMensagem.push(mensagemText);
+            displayChatMensagem();
+            chatInput.value = "";
+        }
+    }
+
+    function displayChatMensagem() {
+        let chatMensagemDiv = document.getElementById('chatMensagem');
+        chatMensagemDiv.innerHTML = "";
+
+        for (let i = 0; i < chatMensagem.length; i++) {
+            let mensagemItem = document.createElement('div');
+            mensagemItem.className = 'mensagem';
+            mensagemItem.innerText = chatMensagem[i];
+            chatMensagemDiv.appendChild(mensagemItem);
+        }
+    }
+</script>
+</body>
+</html>

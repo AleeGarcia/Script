@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="senha1">
+        <input type="text" id="senha2">
+        <button type="button" id="btn">Entrar</button>
+    </form>
+
+    <script>
+        let btn = document.getElementById("btn");
+        let senha1 = document.getElementById("senha1");
+        let senha2 = document.getElementById("senha2");
+
+        btn.onclick = function() {
+            let senhaUm = senha1.value;
+            let senhaDois = senha2.value;
+
+            alert("senha 1 = " + senhaUm + ",  senha 2 = " + senhaDois);
+        }
+    </script>
+</body>
+</html>

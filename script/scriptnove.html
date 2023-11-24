@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Minha Página HTML</title>
+</head>
+<body>
+
+    <div id = "msg"></div>
+    <input type="text" id="nome">
+    <button id="salvar">salvar</button>
+
+    <script>
+
+        if(sessionStorage.getItem("nome")) {
+            div = document.getElementById("msg")
+            div.innerHTML = "Bem vindo" + sessionStorage.getItem("nome")
+        }
+
+botao = document.getElementById("salvar")
+
+botao.onclick = function() {
+    nome = document.getElementById("nome")
+    sessionStorage.setItem("nome", nome.value)
+
+    div = document.getElementById("msg")
+    div.innerHTML = "Bem vindo " + sessionStorage.getItem("nome")
+}
+// local storage é praticamente a mesma coisa
+
+    </script>
+</body>
+</html>

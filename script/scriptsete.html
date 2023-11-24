@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="texto"><br>
+        <button type="button" id="btn">Verificar</button>
+    </form>
+
+    <script>
+        let btn = document.getElementById("btn");
+        let texto = document.getElementById("texto");
+
+        btn.onclick = function() {
+            
+            let textoDigitado = texto.value;
+            let palavraErro = ["pa", "pe", "pi", "po", "pu", "Pa", "Pe", "Pi", "Po", "Pu", "pA", "pE", "pI", "pO", "pU", "PA", "PE", "PI", "PO", "PU"];
+            let erroErro = false;
+
+            for (let palavra of palavraErro) {
+                if (textoDigitado.includes(palavra)) {
+                    erroErro = true;
+                    
+                }
+            }
+
+            if (erroErro) {
+                alert("Erro");
+            } else {
+                alert("Certo");
+            }
+        }
+    </script>
+</body>
+</html>

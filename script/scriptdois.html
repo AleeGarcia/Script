@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title> Quadrado </title>
+
+    <style>
+        #quadrado {
+            height: 500px;
+            width: 500px;
+            background-color: purple;
+            transition: .5s;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    
+    <div id = "quadrado">
+
+    </div>
+
+    <script>
+        let quadrado = document.getElementById("quadrado")
+        quadrado.onmouseover = function() {
+            quadrado.style.borderRadius = "50%"
+        }
+        quadrado.onmouseout = function() {
+            quadrado.style.borderRadius = "0%"
+        }
+    </script>
+
+</body>
+</html>

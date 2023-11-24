@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+    <h1>My tasks</h1>
+    <div>
+    <input type="text" id="taskInput" placeholder="Nova Tarefa">
+    <button onclick="addTask()">Add Task</button>
+</div>
+
+<ul id="taskList"></ul>
+<script>
+    let tasks = [];
+
+    document.onload = updateList()
+    function updateList(){
+        document.getElementById('taskList').innerHTML = ""
+        if(sessionStorage.getItem('tasks')){
+            tasks = JSON.parse(sessionStorage.getItem('tasks'))
+
+            for(let i = 0; i < tasks.length; i++){
+                showTask(tasks[i].text, tasks[i].id)
+            }
+        }
+    }
+    function addTask(){
+        //trim limpa o começo e o fim
+        let taskInput = document.getElementById("taskInput")
+        let taskText = taskInput.value.trim()
+        let taskId = Math.random().toString(36).substring(2,15)
+        //mininmo 2 máximo 15
+
+        if(taskText != ""){
+            tasks.push({
+                text: taskText,
+                id: taskId
+                
+            })
+
+            showTask(taskText, taskId)
+            taskInput.value = ""
+            saveTask()
+            
+        }
+    }
+
+    function showTask(text, id) {
+    let taskList = document.getElementById("taskList")
+    let taskItem = document.createElement("li")
+
+    taskItem.innerText = text
+
+    let removeButton = document.createElement("button")
+    removeButton.innerText = "Remove"
+    removeButton.dataset.id = id
+    //colocar o atributo no botão
+
+    removeButton.onclick = function(){
+        removeTask(this.dataset.id)
+
+    }
+
+    taskList.appendChild(taskItem)
+    taskItem.appendChild(removeButton)
+    //appendChild coloca o filho dentro do pai
+
+    }
+
+    function saveTask(){
+        sessionStorage.setItem("tasks", JSON.stringify(tasks));
+        
+    }
+
+    function removeTask(taskId){
+        let taskIndex = tasks.findIndex(task => task.id === taskId)
+        tasks.splice(taskIndex, 1)
+        saveTask();
+        updateList();
+
+
+    }
+
+
+</script>
+</body>
+</html>

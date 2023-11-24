@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Opa</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="foto">
+        <img src="https://i.gifer.com/ZKZg.gif" alt="Imagem">
+    </div>
+
+    <script>
+        function alternarVisibilidade() {
+
+            var foto = document.getElementById("foto");
+
+            if (foto.style.display === "none") {
+                foto.style.display = "block";
+            } else {
+                foto.style.display = "none";
+            }
+        }
+
+     
+        setInterval(alternarVisibilidade, 100);
+        
+    </script>
+</body>
+</html>
